@@ -1,5 +1,5 @@
 {
-  "siteTitle": "ጉሊቻ ንብረት",
+  "siteTitle": "ጉልቻ",
   "login": "ግባ",
   "logout": "ውጣ",
   "price": "ዋጋ",
@@ -9,5 +9,6 @@
   "available": "ይገኛል",
   "sold": "ታገደ",
   "rent": "ኪራይ",
-  "sale": "ሽያጭ"
+  "sale": "ሽያጭ",
+  "noListings": "እስካሁን ምንም ዝርዝር የለም።"
 }

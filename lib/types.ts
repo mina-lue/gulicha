@@ -7,7 +7,7 @@ export type Listing = {
   type: "rent" | "sale";
   status: "available" | "sold" | "rented";
   location: string;
-  images?: string[];
+  images: string[];
   createdAt?: string;
   updatedAt?: string;
 };

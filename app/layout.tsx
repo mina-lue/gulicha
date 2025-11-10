@@ -3,7 +3,7 @@ import "@/app/globals.css";
 import { ReactNode } from "react";
 
 export const metadata = {
-  title: "Gulicha Real Estate",
+  title: "Gulicha",
   description: "Buy and rent apartments in Ethiopia easily.",
 };
 

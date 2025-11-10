@@ -1,5 +1,5 @@
 {
-  "siteTitle": "Gulicha Real Estate",
+  "siteTitle": "Gulicha",
   "login": "Login",
   "logout": "Logout",
   "price": "Price",
@@ -9,5 +9,6 @@
   "available": "Available",
   "sold": "Sold",
   "rent": "Rent",
-  "sale": "Sale"
+  "sale": "Sale",
+  "noListings": "No listings available yet."
 }
