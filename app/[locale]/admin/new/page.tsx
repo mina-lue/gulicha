@@ -33,10 +33,10 @@ const listingSchema = z.object({
   description: z.string().min(10, "Description is too short"),
   price: z.coerce.number().positive("Price must be greater than 0"),
   currency: z.string().min(1, "Currency is required"),
-  type: z.enum(["rent", "sale"] as const),
-  status: z.enum(["available", "sold", "rented"] as const),
+  type: z.enum(["rent", "sale"]),
+  status: z.enum(["available", "sold", "rented"]),
   location: z.string().min(3, "Location is required"),
-  images: z.array(z.string()).default([]),
+  images: z.array(z.string()).default([])
 });
 
 export type ListingFormData = z.infer<typeof listingSchema>;
@@ -49,28 +49,24 @@ export default function NewListingPage() {
   const [imageFiles, setImageFiles] = useState<File[]>([]);
   const router = useRouter();
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors, isSubmitting },
-  } = useForm<ListingFormData>({
-    resolver: zodResolver(listingSchema),
-    defaultValues: {
-      currency: "ETB",
-      type: "rent",
-      status: "available",
-      images: [],
-    },
-  });
+const {
+  register,
+  handleSubmit,
+  setValue,
+  formState: { errors, isSubmitting },
+} = useForm({
+  resolver: zodResolver(listingSchema),
+  defaultValues: {
+    currency: 'ETB',
+  },
+});
 
   // ----------------------
   // Form Submit
   // ----------------------
-  const onSubmit: SubmitHandler<z.infer<typeof listingSchema>> = async (data) => {
+  const onSubmit: SubmitHandler<ListingFormData> = async (data) => {
+    setUploading(true);
     try {
-      setUploading(true);
-
       const imageUrls = imageFiles.length
         ? await uploadListingImages(imageFiles)
         : [];
@@ -81,8 +77,8 @@ export default function NewListingPage() {
       });
 
       router.push("/en/admin/dashboard");
-    } catch (error) {
-      console.error("Error adding listing:", error);
+    } catch (err) {
+      console.error("Error adding listing:", err);
     } finally {
       setUploading(false);
     }
@@ -93,8 +89,12 @@ export default function NewListingPage() {
       <Card className="w-full max-w-3xl shadow-lg rounded-2xl">
         <CardHeader>
           <CardTitle className="flex items-center justify-between gap-2 text-2xl font-semibold">
-            <span className="flex items-center gap-1"><Plus className="w-6 h-6" /> Create New Listing </span>
-            <Link href={"/admin/dashboard"}> <p className="text-red-600 text-md text-semibold">cancel</p></Link>
+            <span className="flex items-center gap-1">
+              <Plus className="w-6 h-6" /> Create New Listing
+            </span>
+            <Link href={"/admin/dashboard"}>
+              <p className="text-red-600 text-md font-semibold">Cancel</p>
+            </Link>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -135,6 +135,7 @@ export default function NewListingPage() {
             <div>
               <Select
                 onValueChange={(val) => setValue("type", val as "rent" | "sale")}
+                defaultValue="rent"
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Type" />
@@ -153,11 +154,9 @@ export default function NewListingPage() {
             <div>
               <Select
                 onValueChange={(val) =>
-                  setValue(
-                    "status",
-                    val as "available" | "sold" | "rented"
-                  )
+                  setValue("status", val as "available" | "sold" | "rented")
                 }
+                defaultValue="available"
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Status" />
