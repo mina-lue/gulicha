@@ -1,17 +1,12 @@
-import { NextResponse } from "next/server";
+// app/api/admin/login/route.ts
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: Request) {
-  const { token } = await req.json();
-  if (token !== process.env.ADMIN_TOKEN) {
-    return NextResponse.json({ ok: false }, { status: 401 });
+export async function POST(req: NextRequest) {
+  const { email, password } = await req.json();
+
+  if (email === "admin@gulicha.com" && password === "Pw321@G") {
+    return NextResponse.json({ token: "gulicha-jwt-token" });
   }
 
-  const res = NextResponse.json({ ok: true });
-  res.cookies.set("admin-token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    maxAge: 60 * 60 * 24,
-  });
-
-  return res;
+  return NextResponse.json({ message: "Invalid credentials" }, { status: 401 });
 }

@@ -10,5 +10,15 @@
   "sold": "Sold",
   "rent": "Rent",
   "sale": "Sale",
-  "noListings": "No listings available yet."
+  "noListings": "No listings available yet.",
+  "Navbar": {
+    "title": "Gulicha",
+    "contact": "Contact Us",
+    "login":"Login"
+  },
+  "Admin": {
+    "Admin Login": "Admin Login",
+    "Login": "Login",
+    "Logging in": "Logging in..."
+  }
 }

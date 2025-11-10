@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 
 const PUBLIC_FILE = /\.(.*)$/;
 const locales = ['en', 'am'];
-const defaultLocale = 'en';
+const defaultLocale = 'am';
 
 export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;

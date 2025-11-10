@@ -10,5 +10,15 @@
   "sold": "ታገደ",
   "rent": "ኪራይ",
   "sale": "ሽያጭ",
-  "noListings": "እስካሁን ምንም ዝርዝር የለም።"
+  "noListings": "እስካሁን ምንም ዝርዝር የለም።",
+  "Navbar": {
+    "title": "ጉልቻ",
+    "contact": "አግኙን",
+    "login":"ግባ"
+  },
+  "Admin": {
+    "Admin Login": "Admin Login in Amharic",
+    "Login": "Login in Amharoc",
+    "Logging in": "Logging in..."
+  }
 }

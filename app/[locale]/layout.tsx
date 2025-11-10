@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import { i18n } from '@/i18n/config';
+import Navbar from '@/components/NavBar';
 
 export default async function LocaleLayout({
   children,
@@ -20,7 +21,8 @@ export default async function LocaleLayout({
 
   return (
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
+            <Navbar />
+            <main className='pt-16'>{children}</main>
         </NextIntlClientProvider>
   );
 }

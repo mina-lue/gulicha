@@ -5,7 +5,7 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 const nextConfig = {
   // Add your normal Next.js config here
    images: {
-    domains: ['images.pexels.com'], // ✅ add any external image hosts here remotePatterns: [new URL('https://images.pexels.com/**')],
+    domains: ['images.pexels.com', 'res.cloudinary.com'], // ✅ add any external image hosts here remotePatterns: [new URL('https://images.pexels.com/**')],
   },
   reactStrictMode: true,
 };
